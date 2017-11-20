@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+
+  <head>
+
+  </head>
+
+  <body>
+
+    <fieldset class="float fixed-height">
+      <legend>Image file</legend>
+      <select id="hello" class="critical">
+        <option value="" id="no-image">--select--</option>
+        <option value="bird.jpg-84.6-21">Bird</option>
+        <option value="birb.jpg-94-57">Birb</option>
+        <option value="ball.jpg-95-35">Ball</option>
+        <option value="mic.jpg-87-20">Mic</option>
+        <option value="cherry.jpg-86-21">Cherry</option>
+        <option value="sunflower.jpg-94-22">Sunflower</option>
+        <option value="baseball.jpg-87-50">Baseball</option>
+        <option value="flower.jpg-80-17">Flower</option>
+      </select><br>
+    </fieldset>
+    <fieldset class="fixed-height" hidden>
+      <legend>Optimize</legend>
+      <label class="critical" >Accuracy: </label>
+      <input id="accuracySetter" class="critical" type="number" value="50" min="1" max="100" />
+      <input id="accuracy" class="critical wide" type="range" value="50" step="0.1" min="1" max="100" />
+      <progress id="optimize-progress" value="0" max="100" hidden></progress>
+      <button id="optimize" class="critical">Optimize</button>
+    </fieldset>
+    <fieldset class="resize fixed-height" hidden>
+      <legend>Sensitivity</legend>
+      <input id="sensitivitySetter" class="critical" type="number" value="50" min="1" max="100"/>
+      <input id="sensitivity" class="critical wide" type="range" value="50" step="0.1" min="1" />
+    </fieldset>
+    <fieldset class="resize fixed-height" hidden>
+      <legend>Tolerance</legend>
+      <input id="toleranceSetter" class="critical" type="number" value="50" min="1" max="100"/>
+      <input id="tolerance" class="critical wide" type="range" value="50" step="0.1" min="1" />
+    </fieldset>
+    <fieldset class="float" hidden>
+      <legend>Image</legend>
+      <img id="bye" />
+    </fieldset>
+    <fieldset hidden>
+      <legend>Object</legend>
+      <img id="tada" />
+    </fieldset>
+  </body>
+
+</html>
