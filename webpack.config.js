@@ -8,6 +8,7 @@ const styles = "./style.css";
 const outputPath = __dirname + "/examples/public";
 
 module.exports = {
+  context: __dirname,
   entry: {
     scripts: scripts,
     styles: styles
