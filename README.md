@@ -16,3 +16,4 @@ Then run:
 ```
 npm run console
 ```
+<img src="./sample.png" width="500" />
