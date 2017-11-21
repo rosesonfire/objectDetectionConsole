@@ -7,5 +7,7 @@ exec(`webpack-dev-server --content-base ${__dirname}/../app --config ${__dirname
     console.log(err);
     return;
   }
-  console.log(`stderr: ${stderr}`);
+  if (stderr) {
+    console.log(`stderr: ${stderr}`);
+  }
 });
