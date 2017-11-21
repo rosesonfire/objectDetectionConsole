@@ -2,9 +2,9 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var HtmlWebpackExcludeAssetsPlugin = require("html-webpack-exclude-assets-plugin");
 
-const template = "./../template.html";
-const scripts = "./../script.js";
-const styles = "./../style.css";
+const template = "./../app/template.html";
+const scripts = "./../app/script.js";
+const styles = "./../app/style.css";
 const outputPath = __dirname + "/public";
 
 module.exports = {
