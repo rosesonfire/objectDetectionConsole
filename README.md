@@ -1,4 +1,4 @@
-This package is under construction and not available in npm as of yet.
+_This package is under construction and not available in npm as of yet._
 
 A simple web console application for the [**object-detection**](https://github.com/rosesonfire/objectDetection) package
 # Installation
