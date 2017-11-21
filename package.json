@@ -1,10 +1,11 @@
 {
   "name": "object-detection-console",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple web console application for the object-detection package",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": "./bin/objectDetectionConsole.js",
   "author": "rosesonfire",
   "repository": {
     "type": "git",
@@ -30,7 +31,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-exclude-assets-plugin": "0.0.5",
     "html-webpack-plugin": "^2.30.1",
-    "object-detection": "0.0.1",
+    "object-detection": "0.0.2",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.4"
   }
