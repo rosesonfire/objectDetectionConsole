@@ -55,7 +55,7 @@ function refresh(optimize, detail) {
 
   }
   
-  var config = { imageName, fileExt, sensitivity, tolerance };
+  var config = { imageName, sensitivity, tolerance };
 
   detectObject(config)
     .then(function(base64ImgResponse) {
@@ -65,7 +65,7 @@ function refresh(optimize, detail) {
         var base64Img = base64ImgResponse.base64Img,
             tada = document.querySelector("#tada");
 
-        tada.setAttribute("src", "data:image/" + fileExt + ";base64," + base64Img);
+        tada.setAttribute("src", "data:image/jpeg;base64," + base64Img);
 
         unhideCriticalElements();
 

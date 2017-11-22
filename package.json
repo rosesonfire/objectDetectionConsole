@@ -3,7 +3,8 @@
   "version": "0.0.2",
   "description": "A simple web console application for the object-detection package",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --content-base ./app --config ./bin/webpack.config.js"
   },
   "bin": "./bin/objectDetectionConsole.js",
   "author": "rosesonfire",
@@ -27,7 +28,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "object-detection": "0.0.2",
+    "object-detection": "0.0.3",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.4"
   }

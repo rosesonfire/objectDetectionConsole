@@ -16,3 +16,10 @@ Then run:
 npm run console
 ```
 <img src="./sample.png" width="500" />
+
+# Caution
+- Use small images, preferably in JPG format and less than 100 kB.
+- Currently works for single object.
+- Behaviour is not strongly defined for multi-objects.
+- Contiguous objects are considered as single object.
+- Optimizer is not well tuned yet.

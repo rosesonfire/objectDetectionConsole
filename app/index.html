@@ -8,12 +8,24 @@
         border: 2px solid;
         padding: 20px;
         width: max-content;
+        overflow: auto;
+      }
+
+      fieldset.small {
+        width: 100px;
+      }
+
+      fieldset.big {
+        width: 646px;
+      }
+
+      fieldset.medium {
+        width: 518px;
       }
 
       fieldset.resize {
         resize: horizontal;
         overflow: auto;
-        width: 646px;
       }
 
       fieldset.float {
@@ -22,6 +34,10 @@
 
       fieldset.fixed-height {
         height: 70px;
+      }
+
+      fieldset.fixed-height-long {
+        height: 100px;
       }
 
       img {
@@ -37,7 +53,7 @@
 
   <body>
 
-    <fieldset class="float fixed-height">
+    <fieldset class="small">
       <legend>Image file</legend>
       <select id="hello" class="critical">
         <option value="" id="no-image">--select--</option>
@@ -51,20 +67,12 @@
         <option value="flower.jpg-80-17">Flower</option>
       </select><br>
     </fieldset>
-    <fieldset class="fixed-height" hidden>
-      <legend>Optimize</legend>
-      <label class="critical" >Accuracy: </label>
-      <input id="accuracySetter" class="critical" type="number" value="50" min="1" max="100" />
-      <input id="accuracy" class="critical wide" type="range" value="50" step="0.1" min="1" max="100" />
-      <progress id="optimize-progress" value="0" max="100" hidden></progress>
-      <button id="optimize" class="critical">Optimize</button>
-    </fieldset>
-    <fieldset class="resize fixed-height" hidden>
+    <fieldset class="big resize fixed-height" hidden>
       <legend>Sensitivity</legend>
       <input id="sensitivitySetter" class="critical" type="number" value="50" min="1" max="100"/>
       <input id="sensitivity" class="critical wide" type="range" value="50" step="0.1" min="1" />
     </fieldset>
-    <fieldset class="resize fixed-height" hidden>
+    <fieldset class="big resize fixed-height" hidden>
       <legend>Tolerance</legend>
       <input id="toleranceSetter" class="critical" type="number" value="50" min="1" max="100"/>
       <input id="tolerance" class="critical wide" type="range" value="50" step="0.1" min="1" />
@@ -76,6 +84,22 @@
     <fieldset hidden>
       <legend>Object</legend>
       <img id="tada" />
+    </fieldset>
+    <fieldset class="medium fixed-height-long" hidden>
+      <legend>Optimize</legend>
+      <label class="critical" >Accuracy: </label>
+      <input id="accuracySetter" class="critical" type="number" value="50" min="1" max="100" />
+      <input id="accuracy" class="critical wide" type="range" value="50" step="0.1" min="1" max="100" />
+      <progress id="optimize-progress" value="0" max="100" hidden></progress>
+      <button id="optimize" class="critical">Optimize</button>
+    </fieldset>
+    <fieldset class="big" hidden>
+      <legend>Tips</legend>
+      <ul>
+        <li>Optimizer is not well tuned yet. Manual tuning will probably yield better result.</li>
+        <li>Start from minimum senstivity and work your way up</li>
+        <li>Start from maximum tolerance and work your way down</li>
+      </ul>
     </fieldset>
 
     <script src="/scripts.pack.js"></script>
