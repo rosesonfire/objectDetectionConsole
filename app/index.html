@@ -11,16 +11,8 @@
         overflow: auto;
       }
 
-      fieldset.small {
-        width: 100px;
-      }
-
       fieldset.big {
         width: 646px;
-      }
-
-      fieldset.medium {
-        width: 518px;
       }
 
       fieldset.resize {
@@ -34,6 +26,10 @@
 
       fieldset.fixed-height {
         height: 70px;
+      }
+
+      fieldset.fixed-height-small {
+        height: 40px;
       }
 
       fieldset.fixed-height-long {
@@ -53,19 +49,26 @@
 
   <body>
 
-    <fieldset class="small">
+    <fieldset class="big fixed-height-small">
       <legend>Image file</legend>
-      <select id="hello" class="critical">
-        <option value="" id="no-image">--select--</option>
-        <option value="bird.jpg-84.6-21">Bird</option>
-        <option value="birb.jpg-94-57">Birb</option>
-        <option value="ball.jpg-95-35">Ball</option>
-        <option value="mic.jpg-87-20">Mic</option>
-        <option value="cherry.jpg-86-21">Cherry</option>
-        <option value="sunflower.jpg-94-22">Sunflower</option>
-        <option value="baseball.jpg-87-50">Baseball</option>
-        <option value="flower.jpg-80-17">Flower</option>
-      </select><br>
+      <form id="imageSelectorForm">
+        <input id="imageExamplesOption" class="critical" type="radio" name="imageSelection" value="examples" checked="checked"> Examples
+        <select id="imgExamples" class="critical">
+          <option value="">--select--</option>
+          <option value="bird.jpg-84.6-21">Bird</option>
+          <option value="birb.jpg-94-57">Birb</option>
+          <option value="ball.jpg-95-35">Ball</option>
+          <option value="mic.jpg-87-20">Mic</option>
+          <option value="cherry.jpg-86-21">Cherry</option>
+          <option value="sunflower.jpg-94-22">Sunflower</option>
+          <option value="baseball.jpg-87-50">Baseball</option>
+          <option value="flower.jpg-80-17">Flower</option>
+        </select>
+        <input id="imageCustomOption" class="critical" type="radio" name="imageSelection" value="custom" hidden> Custom
+        <select id="imgCustom" class="critical" disabled hidden>
+          <option value="">--select--</option>
+        </select>
+      </form>
     </fieldset>
     <fieldset class="big resize fixed-height" hidden>
       <legend>Sensitivity</legend>
@@ -79,13 +82,13 @@
     </fieldset>
     <fieldset class="float" hidden>
       <legend>Image</legend>
-      <img id="bye" />
+      <img id="image" />
     </fieldset>
     <fieldset hidden>
       <legend>Object</legend>
-      <img id="tada" />
+      <img id="object" />
     </fieldset>
-    <fieldset class="medium fixed-height-long" hidden>
+    <fieldset class="big fixed-height-long" hidden>
       <legend>Optimize</legend>
       <label class="critical" >Accuracy: </label>
       <input id="accuracySetter" class="critical" type="number" value="50" min="1" max="100" />
@@ -97,8 +100,8 @@
       <legend>Tips</legend>
       <ul>
         <li>Optimizer is not well tuned yet. Manual tuning will probably yield better result.</li>
-        <li>Start from minimum senstivity and work your way up</li>
-        <li>Start from maximum tolerance and work your way down</li>
+        <li>Start from minimum senstivity and work your way up.</li>
+        <li>Start from maximum tolerance and work your way down.</li>
       </ul>
     </fieldset>
 

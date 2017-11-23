@@ -7,7 +7,7 @@ In package.json:
 ```
 {
   "scripts": {
-    "console": "object-detection-console"
+    "console": "object-detection-console <custom-image-dir>" // custom-image-dir is the local directory with the jpg images
   }
 }
 ```

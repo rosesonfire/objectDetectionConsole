@@ -1,12 +1,35 @@
 var detectObject = require("object-detection");
+var { customImages, custom } = require("./customImages.json");
 
-function getImageInfo() {
+if (custom) {
   
-  var imgInfo = document.querySelector("#hello").value;
-  var imageName = imgInfo.split("-")[0];
-  var fileExt = imageName.split(".")[1];
+  customImages.forEach(function(customImage) {
+    
+    var customImageElement = document.createElement("option");
+    
+    customImageElement.value = customImage[0];
+    customImageElement.innerHTML = customImage[1];
+    document.querySelector("#imgCustom").appendChild(customImageElement);
+  
+  });
 
-  return { imageName, fileExt };
+  document.querySelector("#imageCustomOption").removeAttribute("hidden");
+  document.querySelector("#imgCustom").removeAttribute("hidden");
+
+}
+
+function getImageName() {
+
+  var imgSelectOption = document.querySelector("#imageSelectorForm").imageSelection.value;
+
+  if (imgSelectOption === "examples") {
+    var imgInfo = document.querySelector("#imgExamples").value;
+    var imageName = imgInfo.split("-")[0];
+  } else {
+    var imageName = document.querySelector("#imgCustom").value;
+  }
+
+  return imageName;
 
 }
 
@@ -29,12 +52,6 @@ function unhideCriticalElements() {
 function refresh(optimize, detail) {
 
   if (!optimize) {
-    
-    var noImageOption = document.querySelector("#no-image");
-    
-    if (noImageOption) {
-      noImageOption.remove();
-    }
 
     document.querySelectorAll("fieldset").forEach(function(fieldset) {
       fieldset.removeAttribute("hidden");
@@ -42,16 +59,15 @@ function refresh(optimize, detail) {
   
     var sensitivity = document.querySelector("#sensitivity").value,
         tolerance = document.querySelector("#tolerance").value,
-        { imageName, fileExt } = getImageInfo();
+        imageName = getImageName();
     
-    document.querySelector("#bye").setAttribute("src", "/" + imageName);
+    document.querySelector("#image").setAttribute("src", "/" + imageName);
     hideCriticalElements();
   } else {
 
     var sensitivity = detail.cur.sensitivity,
         tolerance = detail.cur.tolerance,
-        imageName = detail.imageName,
-        fileExt = detail.fileExt;
+        imageName = detail.imageName
 
   }
   
@@ -63,7 +79,7 @@ function refresh(optimize, detail) {
       if (!optimize) {
 
         var base64Img = base64ImgResponse.base64Img,
-            tada = document.querySelector("#tada");
+            tada = document.querySelector("#object");
 
         tada.setAttribute("src", "data:image/jpeg;base64," + base64Img);
 
@@ -93,18 +109,57 @@ function refresh(optimize, detail) {
 
 }
 
-document.querySelector("#hello").addEventListener("change", function(event){
-  
-  var imgInfo = document.querySelector("#hello").value;
-  var sensitivity = imgInfo.split("-")[1],
-      tolerance = imgInfo.split("-")[2];
+function clean() {
+  document.querySelector("#image").removeAttribute("src");
+  document.querySelector("#object").removeAttribute("src");
+}
 
-  document.querySelector("#sensitivity").value = sensitivity;
-  document.querySelector("#sensitivitySetter").value = sensitivity;
-  document.querySelector("#tolerance").value = tolerance;
-  document.querySelector("#toleranceSetter").value = tolerance;
+document.querySelector("#imageExamplesOption").addEventListener("change", function(event) {
   
-  refresh();
+  if (this.checked) {
+    document.querySelector("#imgCustom").setAttribute("disabled", true);
+    document.querySelector("#imgExamples").removeAttribute("disabled");
+  }
+
+});
+
+document.querySelector("#imageCustomOption").addEventListener("change", function(event) {
+  
+  if (this.checked) {
+    document.querySelector("#imgExamples").setAttribute("disabled", true);
+    document.querySelector("#imgCustom").removeAttribute("disabled");
+  }
+
+});
+
+document.querySelector("#imgExamples").addEventListener("change", function(event){
+  
+  var imgInfo = this.value;
+
+  if (imgInfo) {
+
+    var sensitivity = imgInfo.split("-")[1],
+        tolerance = imgInfo.split("-")[2];
+
+    document.querySelector("#sensitivity").value = sensitivity;
+    document.querySelector("#sensitivitySetter").value = sensitivity;
+    document.querySelector("#tolerance").value = tolerance;
+    document.querySelector("#toleranceSetter").value = tolerance;
+
+    refresh();
+  } else {
+    clean();
+  }
+  
+});
+
+document.querySelector("#imgCustom").addEventListener("change", function(event) {
+  
+  if (this.value) {
+    refresh();
+  } else {
+    clean();
+  } 
   
 });
 
@@ -210,12 +265,11 @@ document.querySelector("#optimize").addEventListener("click", function(event) {
   
   var accuracy = document.querySelector("#accuracy").value,
       optimizeProgress = document.querySelector("#optimize-progress"),
-      { imageName, fileExt } = getImageInfo();
+      imageName = getImageName();
   var step = 25 - accuracy * 25 / 100;
   
   var detail = {
     imageName,
-    fileExt,
     optimizeProgress,
     step,
     cur: {
