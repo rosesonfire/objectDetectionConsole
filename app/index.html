@@ -52,7 +52,7 @@
     <fieldset class="big fixed-height-small">
       <legend>Image file</legend>
       <form id="imageSelectorForm">
-        <input id="imageExamplesOption" class="critical" type="radio" name="imageSelection" value="examples" checked="checked"> Examples
+        <input id="imageExamplesOption" class="critical" type="radio" name="imageSelection" value="examples" checked="checked"><span class="critical"> Examples</span>
         <select id="imgExamples" class="critical">
           <option value="">--select--</option>
           <option value="bird.jpg-84.6-21">Bird</option>
@@ -64,11 +64,11 @@
           <option value="baseball.jpg-87-50">Baseball</option>
           <option value="flower.jpg-80-17">Flower</option>
         </select>
-        <input id="imageCustomOption" class="critical" type="radio" name="imageSelection" value="custom" hidden> Custom
-        <select id="imgCustom" class="critical" disabled hidden>
+        <input id="imageCustomOption" class="critical" type="radio" name="imageSelection" value="custom"><span class="critical"> Custom</span>
+        <select id="imgCustom" class="critical" disabled>
           <option value="">--select--</option>
         </select>
-        (JPG and no more than 100kB)
+        <span class="critical">(JPG and no more than 100kB)</span>
       </form>
     </fieldset>
     <fieldset class="big resize fixed-height" hidden>

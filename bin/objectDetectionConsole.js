@@ -27,18 +27,16 @@ if (customFolder) {
 
   }
   
-  var custom = true;
   var customStaticFolderArg = "--content-base " + customFolder;
 
 } else {
 
   var customImages = [];
-  var custom = false;
   var customStaticFolderArg = "";
 
 }
 
-fs.writeFileSync(__dirname + "/../app/customImages.json", JSON.stringify({ customImages, custom }));
+fs.writeFileSync(__dirname + "/../app/customImages.json", JSON.stringify({ customImages }));
 
 exec("webpack-dev-server --content-base " + __dirname + "/../app " + customStaticFolderArg + " --config " + __dirname + "/webpack.config.js", function(err, stdout, stderr) {
   if (err) {
@@ -46,6 +44,6 @@ exec("webpack-dev-server --content-base " + __dirname + "/../app " + customStati
     return;
   }
   if (stderr) {
-    console.log(`stderr: ${stderr}`);
+    console.log("stderr: " + stderr);
   }
 });

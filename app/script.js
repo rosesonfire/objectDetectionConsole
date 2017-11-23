@@ -1,22 +1,15 @@
 var detectObject = require("object-detection");
-var { customImages, custom } = require("./customImages.json");
+var { customImages } = require("./customImages.json");
 
-if (custom) {
+customImages.forEach(function(customImage) {
   
-  customImages.forEach(function(customImage) {
-    
-    var customImageElement = document.createElement("option");
-    
-    customImageElement.value = customImage[0];
-    customImageElement.innerHTML = customImage[1];
-    document.querySelector("#imgCustom").appendChild(customImageElement);
+  var customImageElement = document.createElement("option");
   
-  });
+  customImageElement.value = customImage[0];
+  customImageElement.innerHTML = customImage[1];
+  document.querySelector("#imgCustom").appendChild(customImageElement);
 
-  document.querySelector("#imageCustomOption").removeAttribute("hidden");
-  document.querySelector("#imgCustom").removeAttribute("hidden");
-
-}
+});
 
 function getImageName() {
 
@@ -254,7 +247,7 @@ document.addEventListener("optimize", function(event) {
       throw new Error("Done, but no optimal solution found");
     }
     refresh();
-    throw new Error(`Done! sensitivity: ${detail.lastOptimal.sensitivity}, tolerance: ${detail.lastOptimal.tolerance}`);
+    throw new Error("Done! sensitivity: " + detail.lastOptimal.sensitivity + ", tolerance: " + detail.lastOptimal.tolerance);
   }
 
   refresh(true, detail);
