@@ -7,7 +7,7 @@ In package.json:
 ```
 {
   "scripts": {
-    "console": "object-detection-console <custom-image-dir>" // custom-image-dir is the local directory with the images (non-jpg images or images above 100kB will not show up)
+    "console": "object-detection-console <custom-image-dir>" // custom-image-dir is the local directory with the jpg images (non-jpg images will not show up and images above 100kB will not show up)
   }
 }
 ```
