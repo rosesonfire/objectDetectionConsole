@@ -12,7 +12,8 @@ if (customFolder) {
     
     var customImages = fs.readdirSync(customFolder).filter(function(img) {
       
-      return path.extname(img) === ".jpg";
+      return path.extname(img) === ".jpg" && fs.statSync(path.join(customFolder, img)).size / 1024 <= 100;
+      
 
     }).map(function(img) {
 
